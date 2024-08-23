@@ -1,12 +1,37 @@
 # Changelog
 
-## Unreleased
+## Unreleased
 
+- [Store](https://inspect.ai-safety-institute.org.uk/agents-api.html#sharing-state) for manipulating arbitrary sample state from within solvers and tools.
+- [Transcript](https://inspect.ai-safety-institute.org.uk/agents-api.html#transcripts) for detailed sample level tracking of model and tool calls, state changes, logging, etc.
+- [Subtasks](https://inspect.ai-safety-institute.org.uk/agents-api.html#sec-subtasks) for delegating work to helper models, sub-agents, etc.
+- Integration with Anthropic [prompt caching](https://inspect.ai-safety-institute.org.uk/caching.html#sec-provider-caching).
+- Specify `init` value in default Docker compose file so that exit signals are handled correctly (substantially improves container shutdown performance).
+- Add `function` field to `ChatMessageTool` to indicate the name of the function called.
+- Added [RACE](https://github.com/UKGovernmentBEIS/inspect_ai/tree/main/benchmarks/race-h/) benchmark.
+
+## v0.3.24 (18 August 2024)
+
+- Support for tool calling for Llama 3.1 models on Bedrock.
+- Report JSON schema validation errors to model in tool response.
+- Support for `strict` mode in OpenAI tool calls (update to v1.40.0 of `openai` package required).
+
+## v0.3.23 (16 August 2024)
+
+- Support for tool calling for Llama 3.1 models on Azure AI and CloudFlare.
+- Incrase default `max_tokens` from 1024 to 2048.
+- Record individual sample reductions along with results for multi-epoch evals.
 - Change default to not log base64 encoded versions of images, as this often resulted in extremely large log files (use `--log-images` to opt back in).
 - Update to new Mistral API (v1.0.1 of `mistralai` is now required).
-- Fix bug in match scorer whereby numeric values with periods aren't correctly recognized.
+- Support for Llama 3.1 models on Amazon Bedrock
 - Eliminate Bedrock dependency on anthropic package (unless using an Anthropic model).
 - Improved resolution of AWS region for Bedrock (respecting already defined AWS_REGION and AWS_DEFAULT_REGION)
+- Fix bug in match scorer whereby numeric values with periods aren't correctly recognized.
+- Added [HumanEval](https://github.com/UKGovernmentBEIS/inspect_ai/tree/main/benchmarks/humaneval), [WinoGrande](https://github.com/UKGovernmentBEIS/inspect_ai/tree/main/benchmarks/winogrande) and [Drop](https://github.com/UKGovernmentBEIS/inspect_ai/tree/main/benchmarks/drop) benchmarks.
+
+## v0.3.22 (07 August 2024)
+
+- Fix issue affecting results of `pass_at_{k}` score reducer.
 
 ## v0.3.21 (07 August 2024)
 
